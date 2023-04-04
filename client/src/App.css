@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  scroll-behavior: smooth;
+}
+/* body {
+  cursor: url("./images/cursor.png"), auto;
+} */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.greenColor {
+  color: green !important;
+}
+.redColor {
+  color: red !important;
+}
+
+.offline {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.offline > a {
+  margin: 1vmax 1vmax;
+  background-color: #27abce;
+  border: 0.1vmax solid #10aad4;
+  border-radius: 10vmax;
+  padding: 0.2vmax 1vmax;
+  font-weight: 800;
+  font-size: 1.1vmax;
+  text-decoration: none;
+  color: #111;
+}

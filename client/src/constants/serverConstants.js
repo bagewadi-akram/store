@@ -1,0 +1,3 @@
+export const SERVER_FAIL = " SERVER_FAIL";
+export const SERVER_REQUEST = " SERVER_REQUEST";
+export const SERVER_SUCCESS = " SERVER_SUCCESS";

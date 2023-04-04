@@ -1,0 +1,28 @@
+.paymentSuccess {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5vmax;
+}
+.paymentSuccess > img {
+  height: 20vmax;
+}
+.paymentSuccess > p {
+  padding: 0.5vmax;
+}
+.paymentSuccess > button {
+  margin: 1vmax 2vmax;
+  border: none;
+  background-color: #27abce;
+  color: white;
+  font: 300 1vmax "Roboto";
+  padding: 0.5vmax 3vmax;
+  cursor: pointer;
+  transition: all 0.5s;
+  outline: none;
+}
+
+.paymentSuccess > button:hover {
+  background-color: #26687a;
+}
