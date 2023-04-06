@@ -17,22 +17,23 @@ import {
 import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 
 const OrderList = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   const alert = useAlert();
 
-  const { error, orders } = useSelector((state) => state.allOrders);
+  const { err, orders } = useSelector((state) => state.allOrders);
 
-  const { error: deleteError, isDeleted } = useSelector((state) => state.order);
+  const { err: deleteError, isDeleted } = useSelector((state) => state.order);
 
   const deleteOrderHandler = (id) => {
     dispatch(deleteOrder(id));
   };
 
   useEffect(() => {
-    if (error) {
-      alert.error(error);
+    if (err) {
+      alert.error(err);
       dispatch(clearErrors());
     }
 
@@ -42,13 +43,12 @@ const OrderList = () => {
     }
 
     if (isDeleted) {
-      alert.success("Order Deleted Successfully");
       navigate("/admin/orders");
       dispatch({ type: DELETE_ORDER_RESET });
     }
 
     dispatch(getAllOrders());
-  }, [dispatch, alert, error, deleteError, navigate, isDeleted]);
+  }, [dispatch, alert, err, deleteError, navigate, isDeleted]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
@@ -59,7 +59,7 @@ const OrderList = () => {
       minWidth: 150,
       flex: 0.5,
       cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Shipped"
+        return params.getValue(params.id, "status") === "Delivered"
           ? "greenColor"
           : "redColor";
       },
@@ -76,7 +76,7 @@ const OrderList = () => {
       field: "amount",
       headerName: "Amount",
       type: "number",
-      minWidth: 270,
+      minWidth: 250,
       flex: 0.5,
     },
 

@@ -4,44 +4,49 @@ const ApiFeatures = require("../utils/apiFeatures");
 const cloudinary = require("cloudinary");
 
 //Function to Create Product.....
-exports.createProduct = catchAsyncErrors(async (req, res, next) => {
-  //Generate Product Id using ShortId
-  const shortid = require("shortid").generate();
-  req.body._id = `str-${shortid}prd`;
+exports.createProduct = async (req, res, next) => {
 
-  req.body.seller = req.user.name;
-  let images = [];
+  try {
+    //Generate Product Id using ShortId
+    const shortid = require("shortid").generate();
+    req.body._id = `str-${shortid}prd`;
 
-  if (typeof req.body.image === "string") {
-    images.push(req.body.image);
-  } else {
-    images = req.body.image;
-  }
+    req.body.seller = req.user.name;
+    let images = [];
 
-  const imagesLinks = [];
+    if (typeof req.body.image === "string") {
+      images.push(req.body.image);
+    } else {
+      images = req.body.image;
+    }
 
-  for (let i = 0; i < images.length; i++) {
-    const result = await cloudinary.v2.uploader.upload(images[i], {
-      folder: "products",
+    const imagesLinks = [];
+
+    for (let i = 0; i < images.length; i++) {
+      const result = await cloudinary.v2.uploader.upload(images[i], {
+        folder: "products",
+      });
+
+      imagesLinks.push({
+        public_id: result.public_id,
+        url: result.secure_url,
+      });
+    }
+    req.body.image = imagesLinks;
+    req.body.user = req.user.id;
+
+    const product = await Product.create(req.body);
+
+    //Success Response
+    res.status(200).json({
+      success: true,
+      message: "Product Created Successfully",
+      product,
     });
-
-    imagesLinks.push({
-      public_id: result.public_id,
-      url: result.secure_url,
-    });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
-  req.body.image = imagesLinks;
-  req.body.user = req.user.id;
-
-  const product = await Product.create(req.body);
-
-  //Success Response
-  res.status(200).json({
-    success: true,
-    message: "Product Created Successfully",
-    product,
-  });
-});
+};
 
 // Function To Get All Products.....
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {

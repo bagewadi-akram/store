@@ -1,6 +1,7 @@
 const Order = require("../model/order");
 const Product = require("../model/product");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const { normalizeBoolean } = require("razorpay/dist/utils/razorpay-utils");
 
 //Create order
 exports.newOrder = async (req, res, next) => {
@@ -79,6 +80,14 @@ exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+//get orders of seller
+exports.getOrders = async (req, res) => {
+  const orders = await Order.find({
+    orderItems: { $elemMatch: { seller: req.user.name } },
+  });
+  res.status(200).json({ success: true, orders });
+};
+
 //update order status
 exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
   const order = await Order.findById(req.params.id);
@@ -106,7 +115,6 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
 
 async function updateStock(id, quantity) {
   const product = await Product.findById(id);
-
   product.stock -= quantity;
 
   await product.save({ validateBeforeSave: false });
@@ -114,7 +122,7 @@ async function updateStock(id, quantity) {
 
 //delete order
 exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
-  const order = await Order.findById(req.param.id);
+  const order = await Order.findById(req.params.id);
 
   if (!order) return res.status(404).json({ message: "Order not Found !!" });
 

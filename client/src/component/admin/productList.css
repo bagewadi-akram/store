@@ -17,38 +17,48 @@
   margin: 2rem;
   text-align: center;
 }
-
-.productListTable {
-  background-color: white;
-  border: none !important;
+.productListContainer > section {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2vmax;
 }
-
-.productListTable div {
-  font: 300 1vmax "Roboto";
-  color: rgba(0, 0, 0, 0.678);
-  border: none !important;
-}
-
-.productListTable a,
-.productListTable button {
-  color: rgba(0, 0, 0, 0.527);
+.card {
+  width: 15vmax;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: rgb(48, 48, 48);
+  margin: 2vmax;
   transition: all 0.5s;
+  padding-bottom: 0.5vmax;
 }
-
-.productListTable a:hover {
-  color: #27abce;
+.card:hover {
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+  transform: translateY(-1vmax);
 }
-
-.productListTable button:hover {
-  color: rgb(236, 30, 30);
+.card > P {
+  margin: 0.1 vmax 0;
+  font-size: 1vmax;
 }
-
-.MuiDataGrid-columnHeader div {
-  color: rgb(255, 255, 255);
+.card > span > p {
+  margin: 0.2vmax 0;
+  font-size: 0.8vmax;
+}
+.buttonContainer {
+  margin: 1vmax 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5vmax;
+}
+.buttonContainer > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: none;
+  padding: 0.2vmax 0.8vmax;
+  border-radius: 1.5vmax;
 }
 
 @media screen and (max-width: 600px) {
-  .productListTable div {
-    font: 300 4vw "Roboto";
-  }
 }

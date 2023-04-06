@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
 import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -7,9 +6,8 @@ import {
   getAdminProduct,
   deleteProduct,
 } from "../../actions/productAction";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -29,7 +27,12 @@ const ProductList = () => {
   );
 
   const deleteProductHandler = (id) => {
+    alert.error(`Deleting Product : ${id}   `);
+    alert.error(` Please Wait .... `);
     dispatch(deleteProduct(id));
+  };
+  const editProductHandler = (id) => {
+    navigate(`/admin/product/${id}`);
   };
 
   useEffect(() => {
@@ -45,94 +48,41 @@ const ProductList = () => {
 
     if (isDeleted) {
       alert.success("Product Deleted Successfully");
-      navigate("/admin/dashboard");
+      navigate("/admin/products");
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
 
     dispatch(getAdminProduct());
   }, [dispatch, alert, err, deleteError, navigate, isDeleted]);
 
-  const columns = [
-    { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
-
-    {
-      field: "title",
-      headerName: "Name",
-      minWidth: 350,
-      flex: 1,
-    },
-    {
-      field: "stock",
-      headerName: "Stock",
-      type: "number",
-      minWidth: 150,
-      flex: 0.3,
-    },
-
-    {
-      field: "price",
-      headerName: "Price",
-      type: "number",
-      minWidth: 270,
-      flex: 0.5,
-    },
-
-    {
-      field: "actions",
-      flex: 0.3,
-      headerName: "Actions",
-      minWidth: 150,
-      type: "number",
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          <Fragment>
-            <Link to={`/admin/product/${params.getValue(params.id, "id")}`}>
-              <EditIcon />
-            </Link>
-
-            <Button
-              onClick={() =>
-                deleteProductHandler(params.getValue(params.id, "id"))
-              }
-            >
-              <DeleteIcon />
-            </Button>
-          </Fragment>
-        );
-      },
-    },
-  ];
-
-  const rows = [];
-
-  products &&
-    products.forEach((item) => {
-      rows.push({
-        id: item._id,
-        stock: item.stock,
-        price: item.price,
-        title: item.title,
-      });
-    });
-
   return (
     <Fragment>
       <MetaData title={`ALL PRODUCTS - Admin`} />
-
       <div className="dashboard">
         <SideBar />
         <div className="productListContainer">
           <h1 id="productListHeading">ALL PRODUCTS</h1>
-
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            className="productListTable"
-            autoHeight
-          />
+          <section>
+            {products &&
+              products.map((product) => (
+                <div className="card" key={product._id}>
+                  <img src={product.image[0].url} alt={product.title} />
+                  <p>{product.title}</p>
+                  <span>
+                    <p>Price : {product.price}</p>
+                    <p>Stock Remaining : {product.stock}</p>
+                  </span>
+                  <div className="buttonContainer">
+                    <button onClick={() => editProductHandler(product._id)}>
+                      <EditIcon fontSize="small" /> Edit
+                    </button>
+                    <button onClick={() => deleteProductHandler(product._id)}>
+                      <DeleteIcon fontSize="small" /> Remove
+                    </button>
+                  </div>
+                </div>
+              ))}
+          </section>
         </div>
       </div>
     </Fragment>

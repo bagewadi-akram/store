@@ -15,16 +15,16 @@ import logo from "../images/logo.png";
 //   });
 // }
 
-async function MakePayment({ totalPrice, user, phoneNo }) {
-  // const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+// async function MakePayment({ totalPrice, user, phoneNo }) {
+//   // const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+//   // if (!res) {
+//   // return console.log(
+//   // "Razorpay SDK failed to load. Please Check Internet Connection and Try Again..."
+//   // );
+//   // }
+// }
 
-  // if (!res) {
-  // return console.log(
-  // "Razorpay SDK failed to load. Please Check Internet Connection and Try Again..."
-  // );
-  // }
-  // try {
-
+export const MakePayment = async ({ totalPrice, user, phoneNo }) => {
   const {
     data: { key },
   } = await axios.get(`/payment/apiKey`);
@@ -55,9 +55,4 @@ async function MakePayment({ totalPrice, user, phoneNo }) {
   };
   const razor = new window.Razorpay(options);
   razor.open();
-  // } catch (error) {
-  // return error.message;
-  // }
-}
-
-export { MakePayment };
+};

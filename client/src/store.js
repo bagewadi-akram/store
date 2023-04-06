@@ -22,6 +22,8 @@ import {
   orderReducer,
 } from "./reducers/orderReducer";
 
+import { paymentReducer } from "./reducers/paymentReducer";
+
 import { serverReducer } from "./reducers/serverReducer";
 
 const reducer = combineReducers({
@@ -40,6 +42,7 @@ const reducer = combineReducers({
   allOrders: allOrdersReducer,
   order: orderReducer,
   userDetails: userDetailsReducer,
+  payment: paymentReducer,
 });
 
 let initialState = {

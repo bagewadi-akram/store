@@ -75,7 +75,7 @@ const UserOptions = () => {
     alert.success("Logout Successfully");
   }
   function dashboard() {
-    navigate("/dashboard");
+    navigate("/login/dashboard");
   }
   return (
     <Fragment>

@@ -43,6 +43,9 @@ const ProductDetails = () => {
   };
 
   const addToCartHandler = () => {
+    if (product.stock < 1) {
+      return alert.error("This Product is Currently Out of Stock");
+    }
     dispatch(addItemsToCart(id, quantity));
     alert.success("Item Added To Cart");
   };
@@ -84,7 +87,7 @@ const ProductDetails = () => {
                     <button onClick={increaseQuantity}>+</button>
                   </div>
                   <button
-                    disabled={product.stock < 1 ? true : false}
+                    // disabled={product.stock < 1 ? true : false}
                     onClick={addToCartHandler}
                   >
                     Add to Cart
@@ -93,8 +96,8 @@ const ProductDetails = () => {
 
                 <p>
                   Status:
-                  <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-                    {product.Stock < 1 ? "OutOfStock" : "InStock"}
+                  <b className={product.stock < 1 ? "redColor" : "greenColor"}>
+                    {product.stock < 1 ? "OutOfStock" : "InStock"}
                   </b>
                 </p>
               </div>
