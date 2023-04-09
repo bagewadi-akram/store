@@ -49,7 +49,7 @@ const Navbar = () => {
         <div className="link-container">
           <Tooltip title="Seller account">
             <IconButton
-              onClick={() => navigate("/login?redirect=dashboard")}
+              onClick={() => navigate("/login/seller  ")}
               size="small"
             >
               <AddBusinessIcon className="link-icon" />

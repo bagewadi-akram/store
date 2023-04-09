@@ -14,7 +14,7 @@ import Profile from "./component/auth/Profile";
 import UpdateProfile from "./component/auth/UpdateProfile";
 import UpdatePassword from "./component/auth/UpdatePassword";
 import ResetPassword from "./component/auth/ResetPassword";
-import LoginSeller from "./component/auth/SellerLogin";
+import SellerLogin from "./component/auth/SellerLogin";
 import ForgotPassword from "./component/auth/ForgetPassword";
 import Cart from "./component/cart/Cart";
 import Shipping from "./component/cart/Shipping";
@@ -62,7 +62,7 @@ function App() {
 
             <Route exact path="/login" Component={Login} />
 
-            <Route exact path="/login/seller" Component={LoginSeller} />
+            <Route exact path="/login/:type" Component={SellerLogin} />
 
             <Route exact path="/account" Component={Profile} />
 
@@ -108,7 +108,9 @@ function App() {
               <Route exact path="/order/:id" Component={OrderDetails} />
             )}
 
-            <Route exact path="/login/dashboard" Component={Dashboard} />
+            {isAuthenticated && (
+              <Route exact path="/login/dashboard" Component={Dashboard} />
+            )}
 
             <Route exact path="/admin/products" Component={ProductList} />
 
@@ -119,7 +121,6 @@ function App() {
             <Route exact path="/admin/orders" Component={OrderList} />
 
             <Route exact path="/admin/order/:id" Component={ProcessOrder} />
-            
           </Routes>
           <Footer />
         </Router>

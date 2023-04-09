@@ -46,7 +46,7 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 // Login seller
-export const loginSeller = (email, password) => async (dispatch) => {
+export const logSeller = (userData) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
 
@@ -54,7 +54,7 @@ export const loginSeller = (email, password) => async (dispatch) => {
 
     const { data } = await axios.post(
       `/user/logSeller`,
-      { email, password },
+      userData,
       config
     );
 

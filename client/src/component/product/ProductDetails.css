@@ -34,7 +34,7 @@
 
 .detailsBlock-1 > p {
   color: rgba(54, 54, 54, 0.582);
-  font: 200 0.6vmax cursive;
+  font: 200 0.6vmax ;
 }
 
 .detailsBlock-2 {
@@ -48,7 +48,7 @@
 }
 
 .detailsBlock-2-span {
-  font: 200 0.8vmax cursive;
+  font: 200 0.8vmax ;
   color: rgba(0, 0, 0, 0.699);
 }
 
@@ -61,7 +61,7 @@
   font: 400 1.8vmax "Franklin Gothic Medium";
   margin: 1vmax 0;
 }
-.detailsBlock-3-1 {
+.detailsBlock-3-1,.detailsBlock-3-1-1 {
   display: flex;
   align-items: center;
 }
@@ -81,11 +81,11 @@
 .detailsBlock-3-1-1 > input {
   border: none;
   padding: 0.5vmax;
-  width: 1vmax;
+  width: 2vmax;
   text-align: center;
   outline: none;
-  font: 400 0.8vmax "Roboto";
-  color: rgba(0, 0, 0, 0.74);
+  font: 400 1vmax "Roboto";
+  color: rgb(0, 0, 0);
 }
 
 .detailsBlock-3-1 > button:last-child {

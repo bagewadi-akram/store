@@ -63,6 +63,21 @@ const Product = () => {
     dispatch(getProduct(keyword, currentPage, price, category));
   }, [dispatch, keyword, currentPage, price, category, alert, err]);
 
+  const paginationOptions = {
+    activePage: { currentPage },
+    itemsCountPerPage: { resultPerPage },
+    totalItemsCount: { productsCount },
+    onChange: { setCurrentPageNo },
+    nextPageText: "Next",
+    prevPageText: "Prev",
+    firstPageText: "1st",
+    lastPageText: "Last",
+    itemClass: "page-item",
+    linkClass: "page-link",
+    activeClass: "pageItemActive",
+    activeLinkClass: "pageLinkActive",
+  };
+
   return (
     <Fragment>
       {loading ? (
@@ -91,7 +106,7 @@ const Product = () => {
             />
 
             <Typography>Categories</Typography>
-            <ul className="categoryBox">
+            <ul className="categoryBox">  
               {categories.map((category) => (
                 <li
                   className="category-link"
@@ -108,20 +123,7 @@ const Product = () => {
           </div>
           {resultPerPage <= count && (
             <div className="paginationBox">
-              <Pagination
-                activePage={currentPage}
-                itemsCountPerPage={resultPerPage}
-                totalItemsCount={productsCount}
-                onChange={setCurrentPageNo}
-                nextPageText="Next"
-                prevPageText="Prev"
-                firstPageText="1st"
-                lastPageText="Last"
-                itemClass="page-item"
-                linkClass="page-link"
-                activeClass="pageItemActive"
-                activeLinkClass="pageLinkActive"
-              />
+              <Pagination {...paginationOptions} />
             </div>
           )}
         </Fragment>
