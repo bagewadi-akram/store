@@ -1,17 +1,27 @@
 .loading {
   width: 100vw;
   height: 100vh;
-  background-color: white;
+  background-color: rgba(49, 46, 46, 0.562);
   display: grid;
   place-items: center;
   max-width: 100%;
+  position: fixed;
+  z-index: 110;
+  top: 0;
+  scroll-behavior: none;
 }
 .loading > div {
-  width: 10vmax;
-  height: 10vmax;
-  border-bottom: 5px solid rgb(110, 110, 110);
+  width: 8vmax;
+  height: 8vmax;
+  border-bottom: 8px solid #27abce;
   border-radius: 50%;
   animation: loadingRotate 800ms linear infinite;
+}
+.loading > p {
+  margin-top: -25vmax;
+  font-size: 2vmax;
+  color: #111;
+  font-weight: 600;
 }
 
 @keyframes loadingRotate {

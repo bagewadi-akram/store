@@ -30,7 +30,7 @@ const SellerLogin = () => {
       alert.error(err);
       dispatch(clearErrors());
     }
-  }, [dispatch, err, alert, isAuthenticated, user]);
+  }, [dispatch, err, alert, isAuthenticated,navigate, user]);
 
   return <Fragment>{type === "signin" ? <Login /> : <Register />}</Fragment>;
 };

@@ -164,7 +164,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   const message = `Your Password Reset Link is :- \n\n ${resetPasswordUrl} \n\n  If you have not requested this email then, please ignore it`;
 
   try {
-    await sendEmail({
+    const result = await sendEmail({
       email: user.email,
       subject: "Store Password Recovery",
       message,
@@ -173,6 +173,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({
       success: true,
       message: `Password Reset Link Successfully Sent To :${user.email}.!`,
+      result,
     });
   } catch (error) {
     user.resetPasswordToken = undefined;
