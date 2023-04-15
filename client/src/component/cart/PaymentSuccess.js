@@ -7,6 +7,7 @@ import { useAlert } from "react-alert";
 import { createOrder, clearErrors } from "../../actions/orderAction";
 import "./PaymentSuccess.css";
 import paymentImage from "../../images/successful_payment.png";
+import { emptyCart } from "../../actions/cartAction";
 
 const PaymentSuccess = () => {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const PaymentSuccess = () => {
         status: "paid",
       };
       dispatch(createOrder(order));
+      dispatch(emptyCart());
       navigate("/success");
     } catch (error) {
       alert.error(error.response.data.message);

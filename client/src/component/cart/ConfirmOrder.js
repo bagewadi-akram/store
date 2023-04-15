@@ -7,8 +7,11 @@ import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import { MakePayment } from "../../actions/paymentAction";
 import Loader from "../layout/loader/Loader";
+import { useAlert } from "react-alert";
 
 const ConfirmOrder = () => {
+  const alert = useAlert();
+
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const [loading, setLoading] = useState(false);
@@ -36,11 +39,14 @@ const ConfirmOrder = () => {
 
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
 
-    await MakePayment({
-      totalPrice,
-      user,
-      phoneNo: shippingInfo.phoneNo,
-    });
+    await MakePayment(
+      {
+        totalPrice,
+        user,
+        phoneNo: shippingInfo.phoneNo,
+      },
+      alert
+    );
     setLoading(false);
   };
 

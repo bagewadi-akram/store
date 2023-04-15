@@ -23,7 +23,9 @@ exports.paymentCreate = async (req, res) => {
 
     res.status(200).json({ order });
   } catch (error) {
-    res.status(200).json({ message: "Error Occurred !!", error });
+    res
+      .status(200)
+      .json({ message: "Error Occurred !!, Check Internet Connection...", error });
   }
 };
 
