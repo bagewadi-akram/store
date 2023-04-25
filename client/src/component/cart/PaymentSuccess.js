@@ -37,7 +37,7 @@ const PaymentSuccess = () => {
       dispatch(emptyCart());
       navigate("/success");
     } catch (error) {
-      alert.error(error.response.data.message);
+      alert.error(error);
     }
   };
   useEffect(() => {

@@ -1,9 +1,31 @@
 .dashboard {
   width: 100vw;
   max-width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 5fr;
+  display: flex;
   position: absolute;
+}
+.dashboard-heading {
+  display: flex;
+  flex-direction: row;
+  font: 300 1.2rem "Roboto";
+  padding: 1rem 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-heading > ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.dashboard-heading > ul > li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 1rem;
 }
 
 .dashboardContainer {
