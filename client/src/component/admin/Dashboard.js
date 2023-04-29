@@ -22,7 +22,7 @@ import MetaData from "../layout/MetaData";
 import PersonIcon from "@material-ui/icons/Person";
 import { DashboardNavbar } from "./DashboardNavbar.js";
 import Loader from "../layout/loader/Loader";
-import { RecentOrders, StaticsCard,ListedProducts } from "./Utils.js";
+import { RecentOrders, StaticsCard, ListedProducts } from "./Utils.js";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -133,7 +133,7 @@ const Dashboard = () => {
             <Sidebar />
           </div>
           <div className="right">
-            <DashboardNavbar />
+            <DashboardNavbar data={user && user} />
             <div className="dashboard-container">
               <div className="statics">
                 {statics.map((item) => (

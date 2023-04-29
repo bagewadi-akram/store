@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
 
-export const DashboardNavbar = () => {
+export const DashboardNavbar = ({ data }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const alert = useAlert();
@@ -20,7 +20,7 @@ export const DashboardNavbar = () => {
     <div className="dashboard-navbar">
       <div className="dashboard-navbar-options">
         <span>
-          <h2>Welcome Back,(UserName)</h2>
+          <h2>Welcome Back, {data.name}</h2>
           <p>Here is all your statistics </p>
         </span>
         <ul>
