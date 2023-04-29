@@ -1,0 +1,135 @@
+.dashboard-card {
+  padding: 0.5vmax 1vmax;
+  margin: 0.5vmax 0;
+  width: 25vmax;
+  box-shadow: 1px 2px 2px #dcdcdc;
+  border: 1px solid #5a575781;
+}
+
+.dashboard-card > p {
+  font: 400 1.2rem "Roboto";
+  color: rgba(0, 0, 0, 0.733);
+}
+.dashboard-card > span {
+  padding-top: 1vmax;
+  padding-left: 1.5vmax;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 500 1.5rem "Roboto";
+}
+.dashboard-card > span > strong {
+  display: flex;
+  align-items: center;
+}
+.dashboard-card > span > strong > svg {
+  padding: 0.1rem;
+}
+
+.dashboard-card > span > p {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+.dashboard-card > span > p > strong {
+  display: flex;
+  align-items: center;
+}
+.dashboard-card > span > p > strong > svg {
+  padding: 0 0.2rem;
+}
+
+.statics > div > p > svg,
+.statics > div > strong > svg,
+.statics > div > span > svg {
+  padding: 0 0.2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .dashboard-card > p {
+    font: 300 0.7rem "Roboto";
+  }
+  .dashboard-card > span {
+    font: 400 0.9rem "Roboto";
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .dashboard-card > p {
+    font: 300 0.6rem "Roboto";
+  }
+  .dashboard-card > span {
+    font: 400 0.7rem "Roboto";
+  }
+  .dashboard-card {
+    width: 20vmax;
+  }
+}
+
+/* recent order styles */
+
+.recent-orders {
+  width: 100%;
+  padding: 3vmax 0;
+}
+.recent-orders > table {
+  width: 100%;
+}
+.recent-orders > table > tr > th {
+  padding: 0.4vmax 1vmax;
+  font: 700 1.4rem "Roboto";
+  border-bottom: 1px solid rgba(36, 35, 35, 0.342);
+  background-color: rgba(95, 87, 87, 0.144);
+}
+.recent-orders > table > tr > td {
+  padding: 0.4vmax 1vmax;
+  font: 500 1rem "Roboto";
+  border-bottom: 1px solid rgba(36, 35, 35, 0.342);
+  background-color: rgba(95, 87, 87, 0.055);
+}
+.recent-orders > table > tr {
+  text-align: center;
+}
+
+/* listed-products */
+
+.listed-products {
+  padding: 10vmax 0;
+}
+.dashboard-products-container {
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* flex-direction: row; */
+  flex-direction: column;
+}
+.dashboard-products-card {
+  display: flex;
+  align-items: center;
+  padding: 0 2vmax;
+}
+.dashboard-products-card > img {
+  width: 12vmax;
+  margin: 1vmax 1vmax;
+}
+.dashboard-products-card > div {
+  align-self: flex-start;
+  margin: 1vmax 1vmax;
+}
+.dashboard-products-card > div > h4 {
+  font: 600 1.2rem "Roboto";
+  padding: 0.2rem 0;
+}
+.dashboard-products-card > div > p {
+  font: 400 1rem "Roboto";
+  padding: 0.2rem 0;
+}
+.dashboard-products-card > div > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard-products-card > div > span > p {
+   font: 400 1rem "Roboto";
+  padding: 0.2rem 0;
+}

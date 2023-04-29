@@ -25,7 +25,10 @@ exports.paymentCreate = async (req, res) => {
   } catch (error) {
     res
       .status(200)
-      .json({ message: "Error Occurred !!, Check Internet Connection...", error });
+      .json({
+        message: "Error Occurred !!, Check Internet Connection...",
+        error,
+      });
   }
 };
 
@@ -60,3 +63,5 @@ exports.payment = async (req, res) => {
     });
   }
 };
+
+//  http://192.168.1.103:3000

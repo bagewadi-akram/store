@@ -23,6 +23,9 @@ input[type="number"] {
 .redColor {
   color: red !important;
 }
+.orangeColor {
+  color: orange !important;
+}
 
 .offline {
   height: 90vh;

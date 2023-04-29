@@ -1,0 +1,46 @@
+.dashboard-navbar {
+  padding: 1vmax 2vmax;
+  border-bottom: 2px rgba(128, 128, 128, 0.582) solid;
+}
+
+.dashboard-navbar-options {
+  display: flex;
+  font: 300 1.2rem "Roboto";
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-navbar-options > ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.dashboard-navbar-options > ul > li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 1rem;
+  font: 600 1.2rem "Roboto";
+}
+
+.dashboard-navbar-options > ul > li > a {
+  color: black;
+}
+
+@media screen and (max-width: 600px) {
+  .dashboard-navbar-options {
+    font: 300 0.7rem "Roboto";
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .dashboard-navbar-options {
+    font: 300 0.7rem "Roboto";
+  }
+  .dashboard-navbar-options > ul {
+    display: none;
+  }
+}

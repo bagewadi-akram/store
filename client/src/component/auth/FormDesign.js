@@ -120,7 +120,7 @@ export const Register = () => {
               <figure>
                 <img src={signup} alt="sign up here" />
               </figure>
-              <Link to="/login/signin" className="signup-image-link">
+              <Link to={"/login/signin"} className="signup-image-link">
                 I am already member
               </Link>
             </div>

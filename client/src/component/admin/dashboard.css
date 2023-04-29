@@ -1,45 +1,54 @@
 .dashboard {
-  width: 100vw;
-  max-width: 100%;
   display: flex;
-  position: absolute;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: white;
 }
-.dashboard-heading {
+.dashboard-container {
+  height: 100vh;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+.right {
+  background-color: rgb(255, 255, 255);
   display: flex;
-  flex-direction: row;
-  font: 300 1.2rem "Roboto";
-  padding: 1rem 1rem;
+  flex-direction: column;
+  height: 100vh;
+  width: 80%;
+  padding: 2vmax 2vmax;
+}
+.left {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 18%;
+  box-shadow: 2px 2px 10px grey;
+  z-index: 1;
+}
+
+.statics {
+  padding: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.graphs {
+  padding: 3rem 0;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
 
-.dashboard-heading > ul {
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-  align-items: center;
-  justify-content: space-evenly;
+.lineChart {
+  width: 40vmax;
+  margin: auto;
 }
-.dashboard-heading > ul > li {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 0 1rem;
-}
-
-.dashboardContainer {
-  border-left: 1px solid rgba(0, 0, 0, 0.13);
-  background-color: rgb(255, 255, 255);
-  padding: 3rem 0;
-}
-
-.dashboardContainer > h1 {
-  color: rgba(0, 0, 0, 0.733);
-  font: 300 2rem "Roboto";
-  text-align: center;
-  width: 50%;
-  padding: 1.5rem;
+.doughnutChart {
+  width: 25vmax;
   margin: auto;
 }
 
@@ -88,16 +97,6 @@
   color: rgb(255, 255, 255);
 }
 
-.lineChart {
-  width: 80%;
-  margin: auto;
-}
-
-.doughnutChart {
-  width: 30vmax;
-  margin: auto;
-}
-
 @media screen and (max-width: 600px) {
   .dashboard {
     grid-template-columns: 1fr;
@@ -115,5 +114,13 @@
     padding: 0.5rem;
     margin: 1rem;
     font: 300 0.9rem "Roboto";
+  }
+}
+@media screen and (max-width: 400px) {
+  .lineChart {
+    width: 90%;
+  }
+  .doughnutChart {
+    width: 80%;
   }
 }

@@ -14,7 +14,6 @@ const SellerLogin = () => {
   const { err, isAuthenticated, user } = useSelector((state) => state.user);
 
   const { type } = useParams();
-
   useEffect(() => {
     if (isAuthenticated) {
       if (user) {
@@ -22,15 +21,12 @@ const SellerLogin = () => {
           navigate("/login/dashboard");
         }
       }
-    } else {
-      navigate("/login/seller");
-    }
-
+    } 
     if (err) {
       alert.error(err);
       dispatch(clearErrors());
     }
-  }, [dispatch, err, alert, isAuthenticated,navigate, user]);
+  }, [dispatch, err, alert, isAuthenticated, navigate, user]);
 
   return <Fragment>{type === "signin" ? <Login /> : <Register />}</Fragment>;
 };

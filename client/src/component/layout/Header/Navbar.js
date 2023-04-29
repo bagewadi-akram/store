@@ -47,15 +47,18 @@ const Navbar = () => {
           </form>
         </span>
         <div className="link-container">
-          <Tooltip title="Seller account">
-            <IconButton
-              onClick={() => navigate("/login/seller  ")}
-              size="small"
-            >
-              <AddBusinessIcon className="link-icon" />
-              <small className="link-text">Seller</small>
-            </IconButton>
-          </Tooltip>
+          {!isAuthenticated && (
+            <Tooltip title="Seller account">
+              <IconButton
+                onClick={() => navigate("/login/seller  ")}
+                size="small"
+              >
+                <AddBusinessIcon className="link-icon" />
+                <small className="link-text">Seller</small>
+              </IconButton>
+            </Tooltip>
+          )}
+
           <Tooltip title="Cart">
             <IconButton onClick={() => navigate("/cart")} size="small">
               <LocalGroceryStoreIcon className="link-icon" />

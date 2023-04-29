@@ -31,9 +31,10 @@ import OrderList from "./component/admin/OrderList";
 import ProcessOrder from "./component/admin/ProcessOrder";
 import UpdateProduct from "./component/admin/UpdateProduct";
 import { checkServer } from "./actions/serverAction";
+import { DashboardNavbar } from "./component/admin/DashboardNavbar";
 
 function App() {
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated, user } = useSelector((state) => state.user);
   const { server } = useSelector((state) => state.server);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -50,7 +51,7 @@ function App() {
     <Fragment>
       {server ? (
         <Router>
-          <Navbar />
+          {isAuthenticated ? user.role === "buyer" && <Navbar /> : <Navbar />}
           <Routes>
             <Route exact path="/" Component={Home} />
 

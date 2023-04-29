@@ -22,8 +22,6 @@ const loadScript = (src, alert) => {
 };
 
 export const MakePayment = async ({ totalPrice, user, phoneNo }, alert) => {
-
-  
   await loadScript("https://checkout.razorpay.com/v1/checkout.js", alert);
 
   const {
@@ -34,10 +32,12 @@ export const MakePayment = async ({ totalPrice, user, phoneNo }, alert) => {
     data: { order },
   } = await axios.post(`/payment/create`, { totalPrice });
 
-  if (!order && !key) {
-    alert.error("Please Check Your Internet Connection ....");
+    if (!order) {
+   return alert.error("Please Check Your Internet Connection ....");
   }
-
+  if (!key) {
+   return alert.error("Please Check Your Internet Connection ....");
+  }
   const options = {
     key,
     amount: totalPrice,
@@ -46,7 +46,8 @@ export const MakePayment = async ({ totalPrice, user, phoneNo }, alert) => {
     description: `This is Payment to store from ${user.name}`,
     image: logo,
     order_id: order.id,
-    callback_url: "http://localhost:8080/payment/pay",
+    // callback_url: "http://localhost:8080/payment/pay",
+    callback_url: "/payment/pay",
     prefill: {
       name: user.name,
       email: user.email,
