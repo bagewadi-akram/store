@@ -76,19 +76,19 @@
 .recent-orders > table {
   width: 100%;
 }
-.recent-orders > table > tr > th {
+.recent-orders > table > thead > th {
   padding: 0.4vmax 1vmax;
   font: 700 1.4rem "Roboto";
   border-bottom: 1px solid rgba(36, 35, 35, 0.342);
   background-color: rgba(95, 87, 87, 0.144);
 }
-.recent-orders > table > tr > td {
+.recent-orders > table > tbody > td {
   padding: 0.4vmax 1vmax;
   font: 500 1rem "Roboto";
   border-bottom: 1px solid rgba(36, 35, 35, 0.342);
   background-color: rgba(95, 87, 87, 0.055);
 }
-.recent-orders > table > tr {
+.recent-orders > table > tbody {
   text-align: center;
 }
 

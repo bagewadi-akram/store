@@ -1,8 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import Sidebar from "./Sidebar.js";
 import "./dashboard.css";
-import { AccordionSummary, Typography } from "@material-ui/core";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Doughnut, Line } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
 import { getAdminProduct } from "../../actions/productAction";
@@ -10,19 +9,14 @@ import { getAllOrders } from "../../actions/orderAction";
 import {
   FaArrowDown,
   FaArrowUp,
-  FaBell,
-  FaCaretDown,
-  FaJediOrder,
-  FaMoneyBillWaveAlt,
   FaPercentage,
   FaRupeeSign,
-  FaSearch,
 } from "react-icons/fa";
 import MetaData from "../layout/MetaData";
-import PersonIcon from "@material-ui/icons/Person";
 import { DashboardNavbar } from "./DashboardNavbar.js";
 import Loader from "../layout/loader/Loader";
 import { RecentOrders, StaticsCard, ListedProducts } from "./Utils.js";
+import { Chart } from "./chart";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -145,6 +139,7 @@ const Dashboard = () => {
               <div className="graphs">
                 <div className="lineChart">
                   <Line data={lineState} />
+                  <Chart />
                 </div>
                 <div className="doughnutChart">
                   <Doughnut data={doughnutState} />

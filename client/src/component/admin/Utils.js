@@ -34,15 +34,15 @@ export const RecentOrders = ({ data }) => {
       </div>
       {/* Content */}
       <table>
-        <tr>
+        <thead>
           <th>Order No</th>
           <th>Status</th>
           <th>Items</th>
           <th>Price</th>
           <th>Payment Status</th>
-        </tr>
+        </thead>
         {data.map((item) => (
-          <tr
+          <tbody
             key={item._id}
             onClick={() => navigate(`/admin/order/${item._id}`)}
           >
@@ -67,7 +67,7 @@ export const RecentOrders = ({ data }) => {
             >
               {item.paymentInfo.status}
             </td>
-          </tr>
+          </tbody>
         ))}
       </table>
     </div>
@@ -87,7 +87,7 @@ export const ListedProducts = ({ data }) => {
             onClick={() => navigate(`/admin/product/${item._id}`)}
             className="dashboard-products-card"
           >
-            <img src={item.image[0].url} />
+            <img src={item.image[0].url} alt={item.title} />
             <div>
               <h4>{item.title} </h4>
               <p>
