@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect } from "react";
-import Sidebar from "./Sidebar.js";
+import React, { Fragment, Suspense, useEffect } from "react";
+// import Sidebar from "./Sidebar.js";
 import "./dashboard.css";
 import { useNavigate } from "react-router-dom";
-import { Doughnut, Line } from "react-chartjs-2";
+import { Doughnut, Bar } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
 import { getAdminProduct } from "../../actions/productAction";
 import { getAllOrders } from "../../actions/orderAction";
@@ -16,7 +16,8 @@ import MetaData from "../layout/MetaData";
 import { DashboardNavbar } from "./DashboardNavbar.js";
 import Loader from "../layout/loader/Loader";
 import { RecentOrders, StaticsCard, ListedProducts } from "./Utils.js";
-import { Chart } from "./chart";
+
+const Sidebar = React.lazy(() => import("./Sidebar.js"));
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -63,18 +64,28 @@ const Dashboard = () => {
       totalAmount += item.totalPrice;
     });
   const lineState = {
-    labels: ["Initial Amount", "Amount Earned"],
+    labels: ["Jan", "Feb", "Mar"],
     datasets: [
       {
-        label: "TOTAL AMOUNT",
+        label: "Total Sales",
         backgroundColor: ["#27abce"],
         hoverBackgroundColor: ["rgb(197, 72, 49)"],
         data: [0, totalAmount],
       },
+      {
+        label: "Amount Earned",
+        backgroundColor: ["#27abce"],
+        data: [0, 350],
+      },
+      {
+        label: "Products",
+        backgroundColor: ["#27abce"],
+        data: [0, 600],
+      },
     ],
   };
 
-  const doughnutState = {
+  const doughnutState = products && {
     labels: ["Out of Stock", "InStock"],
     datasets: [
       {
@@ -90,7 +101,7 @@ const Dashboard = () => {
     up: <FaArrowUp className="greenColor" />,
     percentage: <FaPercentage />,
   };
-  const statics = [
+  const statics = products && [
     {
       name: "Total Sales",
       value: totalAmount,
@@ -124,7 +135,9 @@ const Dashboard = () => {
         <div className="dashboard">
           <MetaData title="Dashboard - Admin Panel" />
           <div className="left">
-            <Sidebar />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Sidebar />
+            </Suspense>
           </div>
           <div className="right">
             <DashboardNavbar data={user && user} />
@@ -138,8 +151,7 @@ const Dashboard = () => {
               </div>
               <div className="graphs">
                 <div className="lineChart">
-                  <Line data={lineState} />
-                  <Chart />
+                  <Bar data={lineState} />
                 </div>
                 <div className="doughnutChart">
                   <Doughnut data={doughnutState} />

@@ -99,6 +99,7 @@
 }
 .dashboard-products-container {
   display: flex;
+  width: 700px;
   /* flex-wrap: wrap; */
   /* flex-direction: row; */
   flex-direction: column;
@@ -106,6 +107,7 @@
 .dashboard-products-card {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   padding: 0 2vmax;
 }
 .dashboard-products-card > img {
@@ -115,6 +117,7 @@
 .dashboard-products-card > div {
   align-self: flex-start;
   margin: 1vmax 1vmax;
+  width: 80%  ;
 }
 .dashboard-products-card > div > h4 {
   font: 600 1.2rem "Roboto";
